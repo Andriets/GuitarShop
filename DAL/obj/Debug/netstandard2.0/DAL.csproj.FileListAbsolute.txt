@@ -1,0 +1,5 @@
+D:\Study\MyProjects\GuitarShop\DAL\bin\Debug\netstandard2.0\DAL.deps.json
+D:\Study\MyProjects\GuitarShop\DAL\bin\Debug\netstandard2.0\DAL.dll
+D:\Study\MyProjects\GuitarShop\DAL\obj\Debug\netstandard2.0\DAL.csprojAssemblyReference.cache
+D:\Study\MyProjects\GuitarShop\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfoInputs.cache
+D:\Study\MyProjects\GuitarShop\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfo.cs
