@@ -28,7 +28,7 @@ namespace DAL.Context
 
         public ApplicationContext()
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -42,7 +42,8 @@ namespace DAL.Context
 
             modelBuilder.Entity<Order>()
                 .HasOne(u => u.User)
-                .WithMany(o => o.Orders);
+                .WithMany(o => o.Orders)
+                .HasForeignKey(o => o.UserId);
 
             modelBuilder.Entity<OrderProduct>()
                 .HasKey(op => new { op.OrderId, op.ProductId });
