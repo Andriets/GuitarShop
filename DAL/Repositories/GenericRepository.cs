@@ -21,7 +21,7 @@ namespace DAL.Repositories
             table = context.Set<T>();
         }
 
-        public async void Delete(int id)
+        public async Task Delete(int id)
         {
             var entity = table.SingleOrDefault(s => s.Id == id);
             table.Remove(entity);
@@ -44,7 +44,7 @@ namespace DAL.Repositories
             await context.SaveChangesAsync();
         }
 
-        public async void Update(T obj)
+        public async Task Update(T obj)
         {
             var entity = await table.SingleOrDefaultAsync(s => s.Id == obj.Id);
             table.Update(entity);

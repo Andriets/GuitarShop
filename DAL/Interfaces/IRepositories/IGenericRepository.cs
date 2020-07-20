@@ -11,7 +11,7 @@ namespace DAL.Interfaces.IRepositories
         IEnumerable<T> GetAll();
         Task<T> GetById(int id);
         Task Insert(T obj);
-        void Update(T obj);
-        void Delete(int id);
+        Task Update(T obj);
+        Task Delete(int id);
     }
 }
