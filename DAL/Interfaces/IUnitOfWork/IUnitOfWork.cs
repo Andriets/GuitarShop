@@ -22,6 +22,7 @@ namespace DAL.Interfaces.IUnitOfWork
         IProducingCountryRepository ProducingCountryRepository { get; }
         IProductRepository ProductRepository { get; }
         ISidePanelRepository SidePanelRepository { get; }
+        ISizeRepository SizeRepository { get; }
         ITypeOfCorpsRepository TypeOfCorpsRepository { get; }
         IUpperDeckRepository UpperDeckRepository { get; }
         UserManager<User> UserManager { get; }

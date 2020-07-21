@@ -25,6 +25,7 @@ namespace DAL.UnitOfWork
         private ISidePanelRepository sidePanelRepository;
         private ITypeOfCorpsRepository typeOfCorpsRepository;
         private IUpperDeckRepository upperDeckRepository;
+        private ISizeRepository sizeRepository;
         public UserManager<User> UserManager { get; set; }
         public SignInManager<User> SignInManager { get; set; }
         public UnitOfWork(IColorRepository colorRepository,
@@ -39,6 +40,7 @@ namespace DAL.UnitOfWork
             IProducerRepository producerRepository,
             IProducingCountryRepository producingCountryRepository,
             ISidePanelRepository sidePanelRepository,
+            ISizeRepository sizeRepository,
             ITypeOfCorpsRepository typeOfCorpsRepository,
             IUpperDeckRepository upperDeckRepository,
             UserManager<User> userManager,
@@ -56,6 +58,7 @@ namespace DAL.UnitOfWork
             this.producerRepository = producerRepository;
             this.producingCountryRepository = producingCountryRepository;
             this.sidePanelRepository = sidePanelRepository;
+            this.sizeRepository = sizeRepository;
             this.typeOfCorpsRepository = typeOfCorpsRepository;
             this.upperDeckRepository = upperDeckRepository;
             UserManager = userManager;
@@ -75,6 +78,7 @@ namespace DAL.UnitOfWork
         public IProducingCountryRepository ProducingCountryRepository => producingCountryRepository;
         public IProductRepository ProductRepository => productRepository;
         public ISidePanelRepository SidePanelRepository => sidePanelRepository;
+        public ISizeRepository SizeRepository => sizeRepository;
         public ITypeOfCorpsRepository TypeOfCorpsRepository => typeOfCorpsRepository;
         public IUpperDeckRepository UpperDeckRepository => upperDeckRepository;
     }
