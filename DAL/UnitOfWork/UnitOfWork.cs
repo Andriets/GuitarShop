@@ -39,6 +39,7 @@ namespace DAL.UnitOfWork
             IPegsRepository pegsRepository,
             IProducerRepository producerRepository,
             IProducingCountryRepository producingCountryRepository,
+            IProductRepository productRepository,
             ISidePanelRepository sidePanelRepository,
             ISizeRepository sizeRepository,
             ITypeOfCorpsRepository typeOfCorpsRepository,
@@ -57,6 +58,7 @@ namespace DAL.UnitOfWork
             this.pegsRepository = pegsRepository;
             this.producerRepository = producerRepository;
             this.producingCountryRepository = producingCountryRepository;
+            this.productRepository = productRepository;
             this.sidePanelRepository = sidePanelRepository;
             this.sizeRepository = sizeRepository;
             this.typeOfCorpsRepository = typeOfCorpsRepository;

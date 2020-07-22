@@ -67,3 +67,7 @@ D:\Study\MyProjects\GuitarShop\GuitarShop\bin\Debug\netcoreapp3.1\runtimes\win\l
 D:\Study\MyProjects\GuitarShop\GuitarShop\bin\Debug\netcoreapp3.1\DAL.dll
 D:\Study\MyProjects\GuitarShop\GuitarShop\bin\Debug\netcoreapp3.1\DAL.pdb
 D:\Study\MyProjects\GuitarShop\GuitarShop\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cs
+D:\Study\MyProjects\GuitarShop\GuitarShop\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\Study\MyProjects\GuitarShop\GuitarShop\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Study\MyProjects\GuitarShop\GuitarShop\bin\Debug\netcoreapp3.1\BLL.dll
+D:\Study\MyProjects\GuitarShop\GuitarShop\bin\Debug\netcoreapp3.1\BLL.pdb

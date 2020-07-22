@@ -15,7 +15,7 @@ namespace BLL.Services
     {
         IUnitOfWork UOW;
         IMapper _mapper;
-        public ColorService(IUnitOfWork unitOfWotk, IMapper mapper)
+        public UpperDeckService(IUnitOfWork unitOfWotk, IMapper mapper)
         {
             UOW = unitOfWotk;
             _mapper = mapper;
