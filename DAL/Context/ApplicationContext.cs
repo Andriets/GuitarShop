@@ -20,7 +20,7 @@ namespace DAL.Context
         public DbSet<LowerDeck> LowerDecks { get; set; }
         public DbSet<SidePanel> SidePanels { get; set; }
         public DbSet<Features> Features { get; set; }
-        public DbSet<NumberOfFrets> Colors { get; set; }
+        public DbSet<Color> Colors { get; set; }
         public DbSet<OverlayFingerboard> OverlayFingerboards { get; set; }
         public DbSet<Size> Sizes { get; set; }
         public DbSet<ProducingCountry> ProducingCountries { get; set; }
@@ -66,7 +66,7 @@ namespace DAL.Context
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.NumberOfFrets)
-               .WithMany((System.Linq.Expressions.Expression<Func<NumberOfFrets, IEnumerable<Product>>>)(n => (IEnumerable<Product>)n.Products));
+               .WithMany(n => n.Products);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.TypeOfCorps)
@@ -94,7 +94,7 @@ namespace DAL.Context
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.Color)
-               .WithMany((System.Linq.Expressions.Expression<Func<NumberOfFrets, IEnumerable<Product>>>)(c => (IEnumerable<Product>)c.Products));
+               .WithMany(c => c.Products);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.OverlayFingerboard)

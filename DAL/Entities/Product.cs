@@ -19,7 +19,7 @@ namespace DAL.Entities
         public LowerDeck LowerDeck { get; set; }
         public SidePanel SidePanel { get; set; }
         public Features Features { get; set; }
-        public NumberOfFrets Color { get; set; }
+        public Color Color { get; set; }
         public OverlayFingerboard OverlayFingerboard { get; set; }
         public Size Size { get; set; }
         public ProducingCountry ProducingCountry { get; set; }

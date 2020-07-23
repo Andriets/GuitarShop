@@ -30,7 +30,6 @@ namespace BLL.Services
         {
             var list = UOW.ColorRepository.GetAll().ToList();
             return _mapper.Map<List<Color>, List<ColorDTO>>(list);
-
         }
 
         public async Task<ColorDTO> GetById(int id)

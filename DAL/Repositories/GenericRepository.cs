@@ -24,13 +24,14 @@ namespace DAL.Repositories
         public async Task Delete(int id)
         {
             var entity = table.SingleOrDefault(s => s.Id == id);
-            table.Remove(entity);
+            var e = table.Remove(entity);
             await context.SaveChangesAsync();
         }
 
         public IEnumerable<T> GetAll()
         {
-            return this.context.Set<T>();
+            var res = this.context.Set<T>();
+            return res;
         }
 
         public async Task<T> GetById(int id)

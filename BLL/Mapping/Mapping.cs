@@ -11,8 +11,8 @@ namespace BLL.Mapping
     {
         public Mapping()
         {
-            CreateMap<NumberOfFrets, NumberOfFretsDTO>();
-            CreateMap<NumberOfFretsDTO, NumberOfFrets>();
+            CreateMap<Color, ColorDTO>();
+            CreateMap<ColorDTO, Color>();
 
             CreateMap<Features, FeaturesDTO>();
             CreateMap<FeaturesDTO, Features>();
