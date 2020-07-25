@@ -10,19 +10,19 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ColorController : ControllerBase
+    public class NumberOfStringsController : ControllerBase
     {
-        private IColorService colorService;
-        public ColorController(IColorService colorService)
+        private INumberOfStringsService numberOfStringsService;
+        public NumberOfStringsController(INumberOfStringsService numberOfStringsService)
         {
-            this.colorService = colorService;
+            this.numberOfStringsService = numberOfStringsService;
         }
 
         [HttpGet]
-        [Route("Colors")]
+        [Route("NumberOfStringss")]
         public IActionResult Get()
         {
-            var list = colorService.GetAll();
+            var list = numberOfStringsService.GetAll();
             if (list != null)
                 return Ok(list);
             else
@@ -30,10 +30,10 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("Color/{id}")]
+        [Route("NumberOfStrings/{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var obj = await colorService.GetById(id);
+            var obj = await numberOfStringsService.GetById(id);
             if (obj != null)
                 return Ok(obj);
             else
@@ -41,10 +41,10 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        [Route("Color/{id}")]
+        [Route("NumberOfStrings/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var res = await colorService.Delete(id);
+            var res = await numberOfStringsService.Delete(id);
             if (res)
                 return Ok("Success");
             else

@@ -12,6 +12,6 @@ namespace BLL.IServices
         Task<FeaturesDTO> GetById(int id);
         Task Insert(FeaturesDTO obj);
         Task Update(FeaturesDTO obj);
-        Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

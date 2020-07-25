@@ -12,6 +12,6 @@ namespace BLL.IServices
         Task<OrderProductDTO> GetById(int id);
         Task Insert(OrderProductDTO obj);
         Task Update(OrderProductDTO obj);
-        Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

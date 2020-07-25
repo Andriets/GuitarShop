@@ -20,9 +20,9 @@ namespace BLL.Services
             UOW = unitOfWotk;
         }
 
-        public async Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            await UOW.FeaturesRepository.Delete(id);
+            return await UOW.FeaturesRepository.Delete(id);
         }
 
         public IEnumerable<FeaturesDTO> GetAll()

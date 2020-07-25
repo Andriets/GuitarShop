@@ -12,6 +12,6 @@ namespace BLL.IServices
         Task<SizeDTO> GetById(int id);
         Task Insert(SizeDTO obj);
         Task Update(SizeDTO obj);
-        Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

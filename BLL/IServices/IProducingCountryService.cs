@@ -12,6 +12,6 @@ namespace BLL.IServices
         Task<ProducingCountryDTO> GetById(int id);
         Task Insert(ProducingCountryDTO obj);
         Task Update(ProducingCountryDTO obj);
-        Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

@@ -12,6 +12,6 @@ namespace BLL.IServices
         Task<NumberOfStringsDTO> GetById(int id);
         Task Insert(NumberOfStringsDTO obj);
         Task Update(NumberOfStringsDTO obj);
-        Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

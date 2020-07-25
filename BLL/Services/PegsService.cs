@@ -21,9 +21,9 @@ namespace BLL.Services
             _mapper = mapper;
         }
 
-        public async Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            await UOW.PegsRepository.Delete(id);
+            return await UOW.PegsRepository.Delete(id);
         }
 
         public IEnumerable<PegsDTO> GetAll()

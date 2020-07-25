@@ -1,4 +1,5 @@
 ﻿using BLL.DTO;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,6 @@ namespace BLL.IServices
         Task<ColorDTO> GetById(int id);
         Task Insert(ColorDTO obj);
         Task Update(ColorDTO obj);
-        Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

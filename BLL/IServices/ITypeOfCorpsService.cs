@@ -12,6 +12,6 @@ namespace BLL.IServices
         Task<TypeOfCorpsDTO> GetById(int id);
         Task Insert(TypeOfCorpsDTO obj);
         Task Update(TypeOfCorpsDTO obj);
-        Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

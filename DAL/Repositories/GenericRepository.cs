@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace DAL.Repositories
 {
@@ -21,17 +22,20 @@ namespace DAL.Repositories
             table = context.Set<T>();
         }
 
-        public async Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
             var entity = table.SingleOrDefault(s => s.Id == id);
-            var e = table.Remove(entity);
+            if (entity == null)
+                return false;
+
+            table.Remove(entity);
             await context.SaveChangesAsync();
+            return true;
         }
 
         public IEnumerable<T> GetAll()
         {
-            var res = this.context.Set<T>();
-            return res;
+            return this.context.Set<T>();
         }
 
         public async Task<T> GetById(int id)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BLL.IServices;
+using BLL.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,19 +10,19 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ColorController : ControllerBase
+    public class ProducerController : ControllerBase
     {
-        private IColorService colorService;
-        public ColorController(IColorService colorService)
+        private IProducerService producerService;
+        public ProducerController(IProducerService producerService)
         {
-            this.colorService = colorService;
+            this.producerService = producerService;
         }
 
         [HttpGet]
-        [Route("Colors")]
+        [Route("Producers")]
         public IActionResult Get()
         {
-            var list = colorService.GetAll();
+            var list = producerService.GetAll();
             if (list != null)
                 return Ok(list);
             else
@@ -30,10 +30,10 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("Color/{id}")]
+        [Route("Producer/{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var obj = await colorService.GetById(id);
+            var obj = await producerService.GetById(id);
             if (obj != null)
                 return Ok(obj);
             else
@@ -41,10 +41,10 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        [Route("Color/{id}")]
+        [Route("Producer/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var res = await colorService.Delete(id);
+            var res = await producerService.Delete(id);
             if (res)
                 return Ok("Success");
             else

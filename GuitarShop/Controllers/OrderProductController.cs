@@ -10,19 +10,19 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ColorController : ControllerBase
+    public class OrderProductController : ControllerBase
     {
-        private IColorService colorService;
-        public ColorController(IColorService colorService)
+        private IOrderProductService orderProductService;
+        public OrderProductController(IOrderProductService orderProductService)
         {
-            this.colorService = colorService;
+            this.orderProductService = orderProductService;
         }
 
         [HttpGet]
-        [Route("Colors")]
+        [Route("OrderProducts")]
         public IActionResult Get()
         {
-            var list = colorService.GetAll();
+            var list = orderProductService.GetAll();
             if (list != null)
                 return Ok(list);
             else
@@ -30,10 +30,10 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("Color/{id}")]
+        [Route("OrderProduct/{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var obj = await colorService.GetById(id);
+            var obj = await orderProductService.GetById(id);
             if (obj != null)
                 return Ok(obj);
             else
@@ -41,10 +41,10 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        [Route("Color/{id}")]
+        [Route("OrderProduct/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var res = await colorService.Delete(id);
+            var res = await orderProductService.Delete(id);
             if (res)
                 return Ok("Success");
             else

@@ -11,53 +11,53 @@ namespace BLL.Mapping
     {
         public Mapping()
         {
-            CreateMap<Color, ColorDTO>();
-            CreateMap<ColorDTO, Color>();
+            CreateMap<Color, ColorDTO>()
+                .ReverseMap();
 
-            CreateMap<Features, FeaturesDTO>();
-            CreateMap<FeaturesDTO, Features>();
+            CreateMap<Features, FeaturesDTO>()
+                .ReverseMap();
 
-            CreateMap<LowerDeck, NumberOfFretsDTO>();
-            CreateMap<NumberOfFretsDTO, LowerDeck>();
+            CreateMap<LowerDeck, NumberOfFretsDTO>()
+                 .ReverseMap();
 
-            CreateMap<NumberOfFrets, NumberOfFretsDTO>();
-            CreateMap<NumberOfStrings, NumberOfStringsDTO>();
+            CreateMap<NumberOfFrets, NumberOfFretsDTO>()
+                 .ReverseMap();
 
-            CreateMap<Order, OrderDTO>();
-            CreateMap<OrderDTO, Order>();
+            CreateMap<Order, OrderDTO>()
+                 .ReverseMap();
 
-            CreateMap<OrderProduct, OrderProductDTO>();
-            CreateMap<OrderProductDTO, OrderProduct>();
+            CreateMap<OrderProduct, OrderProductDTO>()
+                 .ReverseMap();
 
-            CreateMap<OverlayFingerboard, OverlayFingerboardDTO>();
-            CreateMap<OverlayFingerboardDTO, OverlayFingerboard>();
+            CreateMap<OverlayFingerboard, OverlayFingerboardDTO>()
+                 .ReverseMap();
 
-            CreateMap<Pegs, PegsDTO>();
-            CreateMap<PegsDTO, Pegs>();
+            CreateMap<Pegs, PegsDTO>()
+                 .ReverseMap();
 
-            CreateMap<Producer, ProducerDTO>();
-            CreateMap<ProducerDTO, Producer>();
+            CreateMap<Producer, ProducerDTO>()
+                 .ReverseMap();
 
-            CreateMap<ProducingCountry, ProducingCountryDTO>();
-            CreateMap<ProducingCountryDTO, ProducingCountry>();
+            CreateMap<ProducingCountry, ProducingCountryDTO>()
+                 .ReverseMap();
 
-            CreateMap<Product, ProductDTO>();
-            CreateMap<ProductDTO, Product>();
+            CreateMap<Product, ProductDTO>()
+                 .ReverseMap();
 
-            CreateMap<SidePanel, SidePanelDTO>();
-            CreateMap<SidePanelDTO, SidePanel>();
+            CreateMap<SidePanel, SidePanelDTO>()
+                 .ReverseMap();
 
-            CreateMap<Size, SizeDTO>();
-            CreateMap<SizeDTO, Size>();
+            CreateMap<Size, SizeDTO>()
+                 .ReverseMap();
 
-            CreateMap<TypeOfCorps, TypeOfCorpsDTO>();
-            CreateMap<TypeOfCorpsDTO, TypeOfCorps>();
+            CreateMap<TypeOfCorps, TypeOfCorpsDTO>()
+                 .ReverseMap();
 
-            CreateMap<UpperDeck, UpperDeckDTO>();
-            CreateMap<UpperDeckDTO, UpperDeck>();
+            CreateMap<UpperDeck, UpperDeckDTO>()
+                 .ReverseMap();
 
-            CreateMap<User, UserDTO>();
-            CreateMap<UserDTO, User>();
+            CreateMap<User, UserDTO>()
+                 .ReverseMap();
         }
     }
 }

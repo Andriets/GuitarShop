@@ -12,6 +12,6 @@ namespace BLL.IServices
         Task<UpperDeckDTO> GetById(int id);
         Task Insert(UpperDeckDTO obj);
         Task Update(UpperDeckDTO obj);
-        Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

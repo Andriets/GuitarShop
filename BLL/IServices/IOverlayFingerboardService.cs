@@ -12,6 +12,6 @@ namespace BLL.IServices
         Task<OverlayFingerboardDTO> GetById(int id);
         Task Insert(OverlayFingerboardDTO obj);
         Task Update(OverlayFingerboardDTO obj);
-        Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

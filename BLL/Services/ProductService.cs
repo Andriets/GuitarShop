@@ -21,16 +21,16 @@ namespace BLL.Services
             _mapper = mapper;
         }
 
-        public async Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            await UOW.ProductRepository.Delete(id);
+            return await UOW.ProductRepository.Delete(id);
         }
 
         public IEnumerable<ProductDTO> GetAll()
         {
-            var list = UOW.ProductRepository.GetAll().ToList();
-            return _mapper.Map<List<Product>, List<ProductDTO>>(list);
-
+            var productList = UOW.ProductRepository.GetAll().ToList();
+            var colorList = UOW.ColorRepository.GetAll().ToList();
+            return _mapper.Map<List<Product>, List<ProductDTO>>(productList);
         }
 
         public async Task<ProductDTO> GetById(int id)

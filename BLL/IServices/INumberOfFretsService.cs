@@ -12,6 +12,6 @@ namespace BLL.IServices
         Task<NumberOfFretsDTO> GetById(int id);
         Task Insert(NumberOfFretsDTO obj);
         Task Update(NumberOfFretsDTO obj);
-        Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

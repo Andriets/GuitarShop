@@ -25,13 +25,31 @@ namespace API.Controllers
         {
             var list = upperDeckService.GetAll();
             if (list != null)
-            {
                 return Ok(list);
-            }
             else
-            {
                 return NotFound("Empty");
-            }
+        }
+
+        [HttpGet]
+        [Route("UpperDeck/{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var obj = await upperDeckService.GetById(id);
+            if (obj != null)
+                return Ok(obj);
+            else
+                return NotFound("None(");
+        }
+
+        [HttpDelete]
+        [Route("UpperDeck/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var res = await upperDeckService.Delete(id);
+            if (res)
+                return Ok("Success");
+            else
+                return NotFound("Object not found");
         }
     }
 }

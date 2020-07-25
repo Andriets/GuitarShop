@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,6 @@ namespace DAL.Interfaces.IRepositories
         Task<T> GetById(int id);
         Task Insert(T obj);
         Task Update(T obj);
-        Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

@@ -12,6 +12,6 @@ namespace BLL.IServices
         Task<PegsDTO> GetById(int id);
         Task Insert(PegsDTO obj);
         Task Update(PegsDTO obj);
-        Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }

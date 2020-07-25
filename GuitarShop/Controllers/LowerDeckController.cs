@@ -10,19 +10,19 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ColorController : ControllerBase
+    public class LowerDeckController : ControllerBase
     {
-        private IColorService colorService;
-        public ColorController(IColorService colorService)
+        private ILowerDeckService lowerDeckService;
+        public LowerDeckController(ILowerDeckService lowerDeckService)
         {
-            this.colorService = colorService;
+            this.lowerDeckService = lowerDeckService;
         }
 
         [HttpGet]
-        [Route("Colors")]
+        [Route("LowerDecks")]
         public IActionResult Get()
         {
-            var list = colorService.GetAll();
+            var list = lowerDeckService.GetAll();
             if (list != null)
                 return Ok(list);
             else
@@ -30,10 +30,10 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("Color/{id}")]
+        [Route("LowerDeck/{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var obj = await colorService.GetById(id);
+            var obj = await lowerDeckService.GetById(id);
             if (obj != null)
                 return Ok(obj);
             else
@@ -41,10 +41,10 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        [Route("Color/{id}")]
+        [Route("LowerDeck/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var res = await colorService.Delete(id);
+            var res = await lowerDeckService.Delete(id);
             if (res)
                 return Ok("Success");
             else

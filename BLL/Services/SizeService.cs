@@ -21,9 +21,9 @@ namespace BLL.Services
             _mapper = mapper;
         }
 
-        public async Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            await UOW.SizeRepository.Delete(id);
+            return await UOW.SizeRepository.Delete(id);
         }
 
         public IEnumerable<SizeDTO> GetAll()

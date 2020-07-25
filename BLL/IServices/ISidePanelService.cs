@@ -12,6 +12,6 @@ namespace BLL.IServices
         Task<SidePanelDTO> GetById(int id);
         Task Insert(SidePanelDTO obj);
         Task Update(SidePanelDTO obj);
-        Task Delete(int id);
+        Task<bool> Delete(int id);
     }
 }
