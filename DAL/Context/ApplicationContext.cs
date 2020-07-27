@@ -58,55 +58,68 @@ namespace DAL.Context
 
             modelBuilder.Entity<Product>()
                 .HasOne(p => p.Producer)
-                .WithMany(p => p.Products);
+                .WithMany(p => p.Products)
+                .HasForeignKey(p => p.ProducerId);
 
             modelBuilder.Entity<Product>()
                 .HasOne(p => p.NumberOfStrings)
-                .WithMany(n => n.Products);
+                .WithMany(n => n.Products)
+                .HasForeignKey(p => p.NumberOfStringsId);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.NumberOfFrets)
-               .WithMany(n => n.Products);
+               .WithMany(n => n.Products)
+               .HasForeignKey(p => p.NumbetOfFretsId);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.TypeOfCorps)
-               .WithMany(t => t.Products);
+               .WithMany(t => t.Products)
+               .HasForeignKey(p => p.TypeOfCorpsId);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.Pegs)
-               .WithMany(p => p.Products);
+               .WithMany(p => p.Products)
+               .HasForeignKey(p => p.PegsId);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.UpperDeck)
-               .WithMany(u => u.Products);
+               .WithMany(u => u.Products)
+               .HasForeignKey(p => p.UpperDeckId);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.LowerDeck)
-               .WithMany(l => l.Products);
+               .WithMany(l => l.Products)
+               .HasForeignKey(p => p.LowerDeckId);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.SidePanel)
-               .WithMany(s => s.Products);
+               .WithMany(s => s.Products)
+               .HasForeignKey(p => p.SidePanelId);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.Features)
-               .WithMany(f => f.Products);
+               .WithMany(f => f.Products)
+               .HasForeignKey(p => p.FeaturesId);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.Color)
-               .WithMany(c => c.Products);
+               .WithMany(c => c.Products)
+               .HasForeignKey(p => p.ColorId);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.OverlayFingerboard)
-               .WithMany(o => o.Products);
+               .WithMany(o => o.Products)
+               .HasForeignKey(p => p.OverlayFingerboardId);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.Size)
-               .WithMany(s => s.Products);
+               .WithMany(s => s.Products)
+               .HasForeignKey(p => p.SizeId);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.ProducingCountry)
-               .WithMany(p => p.Products);
+               .WithMany(p => p.Products)
+               .HasForeignKey(p => p.ProducingCountryId);
         }
     }
 }

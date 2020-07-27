@@ -12,5 +12,17 @@ namespace BLL.DTO
         public string Description { get; set; }
         public byte[] Image { get; set; }
         public string Producer { get; set; }
+        public string NumberOfStrings { get; set; }
+        public string NumberOfFrets { get; set; }
+        public string TypeOfCorps { get; set; }
+        public string Pegs { get; set; }
+        public string UpperDeck { get; set; }
+        public string LowerDeck { get; set; }
+        public string SidePanel { get; set; }
+        public string Features { get; set; }
+        public string Color { get; set; }
+        public string OverlayFingerboard { get; set; }
+        public string Side { get; set; }
+        public string ProducingCountry { get; set; }
     }
 }

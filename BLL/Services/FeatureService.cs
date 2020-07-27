@@ -18,6 +18,7 @@ namespace BLL.Services
         public FeatureService(IUnitOfWork unitOfWotk, IMapper mapper)
         {
             UOW = unitOfWotk;
+            _mapper = mapper;
         }
 
         public async Task<bool> Delete(int id)
