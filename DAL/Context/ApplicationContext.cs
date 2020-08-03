@@ -69,7 +69,7 @@ namespace DAL.Context
             modelBuilder.Entity<Product>()
                .HasOne(p => p.NumberOfFrets)
                .WithMany(n => n.Products)
-               .HasForeignKey(p => p.NumbetOfFretsId);
+               .HasForeignKey(p => p.NumberOfFretsId);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.TypeOfCorps)
