@@ -1,4 +1,6 @@
 ﻿using BLL.DTO;
+using DAL.PagedList;
+using DAL.QueryParameters;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +10,7 @@ namespace BLL.IServices
 {
     public interface IProductService
     {
-        IEnumerable<ProductDTO> GetAll();
+        PagedList<ProductDTO> GetAll(ProductParameters productParameters);
         Task<ProductDTO> GetById(int id);
         Task Insert(ProductDTO obj);
         Task Update(ProductDTO obj);

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BLL.IServices;
+using DAL.QueryParameters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -20,11 +22,23 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("Products")]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery] ProductParameters productParameters)
         {
-            var list = productService.GetAll();
+            var list = productService.GetAll(productParameters);
             if (list != null)
+            {
+                var metadata = new
+                {
+                    list.TotalCount,
+                    list.PageSize,
+                    list.CurrentPage,
+                    list.TotalPages,
+                    list.HasNext,
+                    list.HasPrevious
+                };
+                Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
                 return Ok(list);
+            }        
             else
                 return NotFound("Empty");
         }

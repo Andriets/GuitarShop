@@ -3,6 +3,8 @@ using BLL.DTO;
 using BLL.IServices;
 using DAL.Entities;
 using DAL.Interfaces.IUnitOfWork;
+using DAL.PagedList;
+using DAL.QueryParameters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +28,9 @@ namespace BLL.Services
             return await UOW.ProductRepository.Delete(id);
         }
 
-        public IEnumerable<ProductDTO> GetAll()
+        public PagedList<ProductDTO> GetAll(ProductParameters productParameters)
         {
-            var productList = UOW.ProductRepository.GetAll().ToList() ?? new List<Product>();
+            var productList = UOW.ProductRepository.GetProducts(productParameters) ?? new PagedList<Product>();
             var colorList = UOW.ColorRepository.GetAll().ToList() ?? new List<Color>();
             var featuresList = UOW.FeaturesRepository.GetAll().ToList() ?? new List<Features>();
             var lowerDeckList = UOW.LowerDeckRepository.GetAll().ToList() ?? new List<LowerDeck>();
@@ -42,7 +44,7 @@ namespace BLL.Services
             var sizeList = UOW.SizeRepository.GetAll().ToList() ?? new List<Size>();
             var typeOfCorpsList = UOW.TypeOfCorpsRepository.GetAll().ToList() ?? new List<TypeOfCorps>();
             var upperDeckList = UOW.UpperDeckRepository.GetAll().ToList() ?? new List<UpperDeck>();
-
+          
             var list = from prodl in productList
                        join fl in featuresList on prodl.FeaturesId equals fl.Id into pfg
                        from pf in pfg.DefaultIfEmpty()
@@ -130,7 +132,7 @@ namespace BLL.Services
                 };
                 products.Add(productDTO);
             }
-            return products;
+            return new PagedList<ProductDTO>(products, productList.Count, productList.CurrentPage, productList.PageSize);
         }
 
         public async Task<ProductDTO> GetById(int id)
