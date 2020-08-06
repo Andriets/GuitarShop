@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DAL.QueryParameters
 {
-    public abstract class PagingParameters
+    public abstract class QueryStringParameters
     {
 		const int maxPageSize = 50;
 		public int PageNumber { get; set; } = 1;
@@ -21,5 +21,6 @@ namespace DAL.QueryParameters
 				_pageSize = (value > maxPageSize) ? maxPageSize : value;
 			}
 		}
+		public string OrderBy { get; set; }
 	}
 }

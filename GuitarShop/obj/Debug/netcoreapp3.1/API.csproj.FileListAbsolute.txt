@@ -143,3 +143,4 @@ D:\Study\MyProjects\GuitarShop\GuitarShop\bin\Debug\netcoreapp3.1\zh-Hans\Micros
 D:\Study\MyProjects\GuitarShop\GuitarShop\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Study\MyProjects\GuitarShop\GuitarShop\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cs
 D:\Study\MyProjects\GuitarShop\GuitarShop\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cache
+D:\Study\MyProjects\GuitarShop\GuitarShop\bin\Debug\netcoreapp3.1\System.Linq.Dynamic.Core.dll

@@ -1,21 +1,32 @@
 ﻿using DAL.Context;
 using DAL.Entities;
 using DAL.Interfaces.IRepositories;
+using DAL.Interfaces.ISortHelper;
 using DAL.PagedList;
 using DAL.QueryParameters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace DAL.Repositories
 {
     public class ProductRepository : GenericRepository<Product>, IProductRepository
     {
-        public ProductRepository(ApplicationContext context) : base(context) { }
+        private ISortHelper<Product> _sortHelper;
+
+        public ProductRepository(ApplicationContext context, ISortHelper<Product> sortHelper) : base(context) 
+        {
+            _sortHelper = sortHelper;
+        }
         public PagedList<Product> GetProducts(ProductParameters productParameters)
         {
-            return PagedList<Product>.ToPagedList(GetAll().OrderBy(p => p.ProductName),
+            var products = GetAll();
+
+            var sorterProducts = _sortHelper.ApplySort(products, productParameters.OrderBy);
+
+            return PagedList<Product>.ToPagedList(sorterProducts,
                 productParameters.PageNumber,
                 productParameters.PageSize);
         }

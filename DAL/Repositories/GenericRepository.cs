@@ -33,7 +33,7 @@ namespace DAL.Repositories
             return true;
         }
 
-        public IEnumerable<T> GetAll()
+        public IQueryable<T> GetAll()
         {
             return this.context.Set<T>();
         }

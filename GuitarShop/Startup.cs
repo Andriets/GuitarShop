@@ -9,8 +9,10 @@ using BLL.Services;
 using DAL.Context;
 using DAL.Entities;
 using DAL.Interfaces.IRepositories;
+using DAL.Interfaces.ISortHelper;
 using DAL.Interfaces.IUnitOfWork;
 using DAL.Repositories;
+using DAL.SortHelper;
 using DAL.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -65,6 +67,7 @@ namespace GuitarShop
             services.AddTransient<IUpperDeckRepository, UpperDeckRepository>();
 
             #endregion
+            services.AddTransient<ISortHelper<Product>, SortHelper<Product>>();
 
             #region Services
 

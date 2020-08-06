@@ -1,5 +1,6 @@
 ﻿using DAL.Entities;
 using DAL.Interfaces.IRepositories;
+using DAL.Interfaces.ISortHelper;
 using DAL.Interfaces.IUnitOfWork;
 using Microsoft.AspNetCore.Identity;
 using System;
