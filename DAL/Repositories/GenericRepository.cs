@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System.Linq.Expressions;
 
 namespace DAL.Repositories
 {
@@ -36,6 +37,11 @@ namespace DAL.Repositories
         public IQueryable<T> GetAll()
         {
             return this.context.Set<T>();
+        }
+        public IQueryable<T> GetByCondition(Expression<Func<T, bool>> expression)
+        {
+            return this.context.Set<T>()
+               .Where(expression);
         }
 
         public async Task<T> GetById(int id)

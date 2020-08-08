@@ -11,5 +11,8 @@ namespace DAL.QueryParameters
         {
             OrderBy = "price";
         }
+        public double MinPrice { get; set; } = 0;
+        public double MaxPrice { get; set; } = 1000000;
+        public bool ValidPriceRange => MaxPrice > MinPrice && MinPrice >= 0;
     }
 }

@@ -24,6 +24,10 @@ namespace API.Controllers
         [Route("Products")]
         public IActionResult Get([FromQuery] ProductParameters productParameters)
         {
+            if (!productParameters.ValidPriceRange)
+            {
+                BadRequest("Price is not valid");
+            }
             var list = productService.GetAll(productParameters);
             if (list != null)
             {

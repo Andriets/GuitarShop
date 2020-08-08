@@ -19,11 +19,12 @@ namespace DAL.Repositories
         public ProductRepository(ApplicationContext context, ISortHelper<Product> sortHelper) : base(context) 
         {
             _sortHelper = sortHelper;
-        }
+        } 
         public PagedList<Product> GetProducts(ProductParameters productParameters)
         {
-            var products = GetAll();
-
+            var products = GetByCondition(p => p.Price >= productParameters.MinPrice &&
+                                          p.Price <= productParameters.MaxPrice);
+            
             var sorterProducts = _sortHelper.ApplySort(products, productParameters.OrderBy);
 
             return PagedList<Product>.ToPagedList(sorterProducts,

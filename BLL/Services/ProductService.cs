@@ -27,7 +27,7 @@ namespace BLL.Services
         {
             return await UOW.ProductRepository.Delete(id);
         }
-
+       
         public PagedList<ProductDTO> GetAll(ProductParameters productParameters)
         {
             var productList = UOW.ProductRepository.GetProducts(productParameters) ?? new PagedList<Product>();
