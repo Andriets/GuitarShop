@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BLL.DTO
+namespace DAL.Entities
 {
-    public class TypeOfCorpsDTO
+    public class GuitarType : BaseEntity
     {
-        public int Id { get; set; }
         public string TypeName { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace DAL.Interfaces.IUnitOfWork
         IProductRepository ProductRepository { get; }
         ISidePanelRepository SidePanelRepository { get; }
         ISizeRepository SizeRepository { get; }
-        ITypeOfCorpsRepository TypeOfCorpsRepository { get; }
+        IGuitarTypeRepository GuitarTypeRepository { get; }
         IUpperDeckRepository UpperDeckRepository { get; }
         UserManager<User> UserManager { get; }
         SignInManager<User> SignInManager { get; }

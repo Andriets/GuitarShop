@@ -50,7 +50,7 @@ namespace BLL.Mapping
             CreateMap<Size, SizeDTO>()
                  .ReverseMap();
 
-            CreateMap<TypeOfCorps, TypeOfCorpsDTO>()
+            CreateMap<GuitarType, GuitarTypeDTO>()
                  .ReverseMap();
 
             CreateMap<UpperDeck, UpperDeckDTO>()

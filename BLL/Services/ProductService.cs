@@ -42,7 +42,7 @@ namespace BLL.Services
             var producingCountryList = UOW.ProducingCountryRepository.GetAll().ToList() ?? new List<ProducingCountry>();
             var sidePanelList = UOW.SidePanelRepository.GetAll().ToList() ?? new List<SidePanel>();
             var sizeList = UOW.SizeRepository.GetAll().ToList() ?? new List<Size>();
-            var typeOfCorpsList = UOW.TypeOfCorpsRepository.GetAll().ToList() ?? new List<TypeOfCorps>();
+            var typeOfCorpsList = UOW.GuitarTypeRepository.GetAll().ToList() ?? new List<GuitarType>();
             var upperDeckList = UOW.UpperDeckRepository.GetAll().ToList() ?? new List<UpperDeck>();
           
             var list = from prodl in productList
@@ -79,7 +79,7 @@ namespace BLL.Services
                        join sl in sizeList on prodl.SizeId equals sl.Id into psg
                        from ps in psg.DefaultIfEmpty()
 
-                       join tocl in typeOfCorpsList on prodl.TypeOfCorpsId equals tocl.Id into ptocg
+                       join tocl in typeOfCorpsList on prodl.GuitarTypeId equals tocl.Id into ptocg
                        from ptoc in ptocg.DefaultIfEmpty()
 
                        join udl in upperDeckList on prodl.UpperDeckId equals udl.Id into pudg
@@ -112,7 +112,7 @@ namespace BLL.Services
                 ProductDTO productDTO = new ProductDTO
                 {
                     Id = l.Id,
-                    ProductName = l.ProducerName,
+                    ProductName = l.ProductName,
                     Price = l.Price,
                     Description = l.Description,
                     Image = l.Image,
@@ -151,7 +151,7 @@ namespace BLL.Services
                 var producingCountry = await UOW.ProducingCountryRepository.GetById((int)product.ProducingCountryId);
                 var sidePanel = await UOW.SidePanelRepository.GetById((int)product.SidePanelId);
                 var size = await UOW.SizeRepository.GetById((int)product.SizeId);
-                var typeOfCorps = await UOW.TypeOfCorpsRepository.GetById((int)product.TypeOfCorpsId);
+                var typeOfCorps = await UOW.GuitarTypeRepository.GetById((int)product.GuitarTypeId);
                 var upperDeck = await UOW.UpperDeckRepository.GetById((int)product.UpperDeckId);
 
                 ProductDTO productDTO = new ProductDTO

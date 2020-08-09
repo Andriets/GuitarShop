@@ -16,8 +16,8 @@ namespace DAL.Entities
         public int? NumberOfStringsId { get; set; }
         public NumberOfFrets NumberOfFrets { get; set; }
         public int? NumberOfFretsId { get; set; }
-        public TypeOfCorps TypeOfCorps { get; set; }
-        public int? TypeOfCorpsId { get; set; }
+        public GuitarType GuitarType { get; set; }
+        public int? GuitarTypeId { get; set; }
         public Pegs Pegs { get; set; }
         public int? PegsId { get; set; }
         public UpperDeck UpperDeck { get; set; }

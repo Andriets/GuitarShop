@@ -7,8 +7,8 @@ using System.Text;
 
 namespace DAL.Repositories
 {
-    public class TypeOfCorpsRepository : GenericRepository<TypeOfCorps>, ITypeOfCorpsRepository
+    public class GuitarTypeRepository : GenericRepository<GuitarType>, IGuitarTypeRepository
     {
-        public TypeOfCorpsRepository(ApplicationContext context) : base(context) { }
+        public GuitarTypeRepository(ApplicationContext context) : base(context) { }
     }
 }

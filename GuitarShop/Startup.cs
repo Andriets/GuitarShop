@@ -63,7 +63,7 @@ namespace GuitarShop
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ISidePanelRepository, SidePanelRepository>();
             services.AddTransient<ISizeRepository, SizeRepository>();
-            services.AddTransient<ITypeOfCorpsRepository, TypeOfCorpsRepository>();
+            services.AddTransient<IGuitarTypeRepository, GuitarTypeRepository>();
             services.AddTransient<IUpperDeckRepository, UpperDeckRepository>();
 
             #endregion
@@ -85,7 +85,7 @@ namespace GuitarShop
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ISidePanelService, SidePanelService>();
             services.AddTransient<ISizeService, SizeService>();
-            services.AddTransient<ITypeOfCorpsService, TypeOfCorpsService>();
+            services.AddTransient<IGuitarTypeService, GuitarTypeService>();
             services.AddTransient<IUpperDeckService, UpperDeckService>();
 
             #endregion

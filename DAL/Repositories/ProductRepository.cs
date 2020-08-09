@@ -24,12 +24,22 @@ namespace DAL.Repositories
         {
             var products = GetByCondition(p => p.Price >= productParameters.MinPrice &&
                                           p.Price <= productParameters.MaxPrice);
+
+            SearchByName(ref products, productParameters.ProductName);
             
             var sorterProducts = _sortHelper.ApplySort(products, productParameters.OrderBy);
 
             return PagedList<Product>.ToPagedList(sorterProducts,
                 productParameters.PageNumber,
                 productParameters.PageSize);
+        }
+
+        private void SearchByName(ref IQueryable<Product> products, string productName)
+        {
+            if (!products.Any() || string.IsNullOrWhiteSpace(productName))
+                return;
+
+            products = products.Where(p => p.ProductName.ToLower().Contains(productName.Trim().ToLower()));
         }
     }
 }

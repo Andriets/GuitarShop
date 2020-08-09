@@ -24,7 +24,7 @@ namespace DAL.UnitOfWork
         private IProducingCountryRepository producingCountryRepository;
         private IProductRepository productRepository;
         private ISidePanelRepository sidePanelRepository;
-        private ITypeOfCorpsRepository typeOfCorpsRepository;
+        private IGuitarTypeRepository guitarTypeRepository;
         private IUpperDeckRepository upperDeckRepository;
         private ISizeRepository sizeRepository;
         public UserManager<User> UserManager { get; set; }
@@ -43,7 +43,7 @@ namespace DAL.UnitOfWork
             IProductRepository productRepository,
             ISidePanelRepository sidePanelRepository,
             ISizeRepository sizeRepository,
-            ITypeOfCorpsRepository typeOfCorpsRepository,
+            IGuitarTypeRepository guitarTypeRepository,
             IUpperDeckRepository upperDeckRepository,
             UserManager<User> userManager,
             SignInManager<User> signInManager)
@@ -62,7 +62,7 @@ namespace DAL.UnitOfWork
             this.productRepository = productRepository;
             this.sidePanelRepository = sidePanelRepository;
             this.sizeRepository = sizeRepository;
-            this.typeOfCorpsRepository = typeOfCorpsRepository;
+            this.guitarTypeRepository = guitarTypeRepository;
             this.upperDeckRepository = upperDeckRepository;
             UserManager = userManager;
             SignInManager = signInManager;
@@ -82,7 +82,7 @@ namespace DAL.UnitOfWork
         public IProductRepository ProductRepository => productRepository;
         public ISidePanelRepository SidePanelRepository => sidePanelRepository;
         public ISizeRepository SizeRepository => sizeRepository;
-        public ITypeOfCorpsRepository TypeOfCorpsRepository => typeOfCorpsRepository;
+        public IGuitarTypeRepository GuitarTypeRepository => guitarTypeRepository;
         public IUpperDeckRepository UpperDeckRepository => upperDeckRepository;
     }
 }

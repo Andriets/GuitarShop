@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DAL.Interfaces.IRepositories
 {
-    public interface ITypeOfCorpsRepository : IGenericRepository<TypeOfCorps>
+    public interface IGuitarTypeRepository : IGenericRepository<GuitarType>
     {
     }
 }

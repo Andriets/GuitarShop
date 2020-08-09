@@ -14,5 +14,6 @@ namespace DAL.QueryParameters
         public double MinPrice { get; set; } = 0;
         public double MaxPrice { get; set; } = 1000000;
         public bool ValidPriceRange => MaxPrice > MinPrice && MinPrice >= 0;
+        public string ProductName { get; set; }
     }
 }

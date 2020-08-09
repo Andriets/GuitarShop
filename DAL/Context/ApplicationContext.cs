@@ -14,7 +14,7 @@ namespace DAL.Context
         public DbSet<Producer> Producers { get; set; }
         public DbSet<NumberOfStrings> NumberOfStrings { get; set; }
         public DbSet<NumberOfFrets> NumberOfFrets { get; set; }
-        public DbSet<TypeOfCorps> TypeOfCorps { get; set; }
+        public DbSet<GuitarType> GuitarTypes { get; set; }
         public DbSet<Pegs> Pegs { get; set; }
         public DbSet<UpperDeck> UpperDecks { get; set; }
         public DbSet<LowerDeck> LowerDecks { get; set; }
@@ -28,12 +28,12 @@ namespace DAL.Context
 
         public ApplicationContext()
         {
-            //Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=GuitarShop;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=GuitarShopv2;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -72,9 +72,9 @@ namespace DAL.Context
                .HasForeignKey(p => p.NumberOfFretsId);
 
             modelBuilder.Entity<Product>()
-               .HasOne(p => p.TypeOfCorps)
+               .HasOne(p => p.GuitarType)
                .WithMany(t => t.Products)
-               .HasForeignKey(p => p.TypeOfCorpsId);
+               .HasForeignKey(p => p.GuitarTypeId);
 
             modelBuilder.Entity<Product>()
                .HasOne(p => p.Pegs)
