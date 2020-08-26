@@ -33,6 +33,7 @@ namespace BLL.Services
             var productList = UOW.ProductRepository.GetProducts(productParameters) ?? new PagedList<Product>();
             var colorList = UOW.ColorRepository.GetAll().ToList() ?? new List<Color>();
             var featuresList = UOW.FeaturesRepository.GetAll().ToList() ?? new List<Features>();
+            var guitarTypeList = UOW.GuitarTypeRepository.GetAll().ToList() ?? new List<GuitarType>();
             var lowerDeckList = UOW.LowerDeckRepository.GetAll().ToList() ?? new List<LowerDeck>();
             var numberOfFretsList = UOW.NumberOfFretsRepository.GetAll().ToList() ?? new List<NumberOfFrets>();
             var numberOfStrings = UOW.NumberOfStringsRepository.GetAll().ToList() ?? new List<NumberOfStrings>();
@@ -51,6 +52,9 @@ namespace BLL.Services
                         
                        join cl in colorList on prodl.ColorId equals cl.Id into pcg
                        from pc in pcg.DefaultIfEmpty()
+
+                       join gtl in guitarTypeList on prodl.GuitarTypeId equals gtl.Id into pgtg
+                       from pgt in pgtg.DefaultIfEmpty()
 
                        join ldl in lowerDeckList on prodl.LowerDeckId equals ldl.Id into pldg
                        from pld in pldg.DefaultIfEmpty()
@@ -90,6 +94,7 @@ namespace BLL.Services
                            Id = prodl.Id,
                            ProductName = prodl.ProductName,
                            FeaturesName = pf?.FeaturesName,
+                           GuitarType = pgt.TypeName,
                            Price = prodl.Price,
                            Description = prodl?.Description,
                            Image = prodl.Image,
@@ -118,6 +123,7 @@ namespace BLL.Services
                     Image = l.Image,
                     Color = l.ColorName,
                     Features = l.FeaturesName,
+                    GuitarType = l.GuitarType,
                     LowerDeck = l.LoweDeckMaterial,
                     NumberOfFrets = l.FretsNumber,
                     NumberOfStrings = l.StringsNumber,
@@ -132,6 +138,45 @@ namespace BLL.Services
                 };
                 products.Add(productDTO);
             }
+            if (!string.IsNullOrEmpty(productParameters.ColorNames))
+                products = FilterByColor(products, productParameters.ColorNames);
+
+            if (!string.IsNullOrEmpty(productParameters.Features))
+                products = FilterByFeature(products, productParameters.Features);
+
+            if (!string.IsNullOrEmpty(productParameters.GuitarTypes))
+                products = FilterByGuitarType(products, productParameters.GuitarTypes);
+
+            if (!string.IsNullOrEmpty(productParameters.LowerDecks))
+                products = FilterByLowerDeck(products, productParameters.LowerDecks);
+
+            if (!string.IsNullOrEmpty(productParameters.NumbersOfFrets))
+                products = FilterByNumberOfFrets(products, productParameters.NumbersOfFrets);
+
+            if (!string.IsNullOrEmpty(productParameters.NumbersOfStrings))
+                products = FilterByNumberOfStrings(products, productParameters.NumbersOfStrings);
+
+            if (!string.IsNullOrEmpty(productParameters.OverlayFingerboars))
+                products = FilterByOverlayFingerboard(products, productParameters.OverlayFingerboars);
+
+            if (!string.IsNullOrEmpty(productParameters.Pegs))
+                products = FilterByPegs(products, productParameters.Pegs);
+
+            if (!string.IsNullOrEmpty(productParameters.Producers))
+                products = FilterByProducer(products, productParameters.Producers);
+
+            if (!string.IsNullOrEmpty(productParameters.ProducingCounties))
+                products = FilterByProducingCountry(products, productParameters.ProducingCounties);
+
+            if (!string.IsNullOrEmpty(productParameters.SidePanels))
+                products = FilterBySidePanel(products, productParameters.SidePanels);
+
+            if (!string.IsNullOrEmpty(productParameters.Sizes))
+                products = FilterBySize(products, productParameters.Sizes);
+
+            if (!string.IsNullOrEmpty(productParameters.UpperDecks))
+                products = FilterByUpperDeck(products, productParameters.UpperDecks);
+
             return new PagedList<ProductDTO>(products, productList.Count, productList.CurrentPage, productList.PageSize);
         }
 
@@ -193,6 +238,149 @@ namespace BLL.Services
         {
             var model = _mapper.Map<ProductDTO, Product>(obj);
             await UOW.ProductRepository.Update(model);
+        }
+
+        private List<ProductDTO> FilterByColor(List<ProductDTO> products, string colors)
+        {
+            var sortedProducts = new List<ProductDTO>();
+            foreach (var p in products)
+            {
+                if (colors.Contains(p.Color))
+                    sortedProducts.Add(p);
+            }
+            return sortedProducts;
+        }
+
+        private List<ProductDTO> FilterByFeature(List<ProductDTO> products, string features)
+        {
+            var sortedProducts = new List<ProductDTO>();
+            foreach (var p in products)
+            {
+                if (features.Contains(p.Features))
+                    sortedProducts.Add(p);
+            }
+            return sortedProducts;
+        }
+
+        private List<ProductDTO> FilterByGuitarType(List<ProductDTO> products, string guitarTypes)
+        {
+            var sortedProducts = new List<ProductDTO>();
+            foreach (var p in products)
+            {
+                if (guitarTypes.Contains(p.GuitarType))
+                    sortedProducts.Add(p);
+            }
+            return sortedProducts;
+        }
+
+        private List<ProductDTO> FilterByLowerDeck(List<ProductDTO> products, string lowerDecks)
+        {
+            var sortedProducts = new List<ProductDTO>();
+            foreach (var p in products)
+            {
+                if (lowerDecks.Contains(p.LowerDeck))
+                    sortedProducts.Add(p);
+            }
+            return sortedProducts;
+        }
+
+        private List<ProductDTO> FilterByNumberOfFrets(List<ProductDTO> products, string numbersOfFrets)
+        {
+            var sortedProducts = new List<ProductDTO>();
+            foreach (var p in products)
+            {
+                if (numbersOfFrets.Contains(p.NumberOfFrets.ToString()))
+                    sortedProducts.Add(p);
+            }
+            return sortedProducts;
+        }
+
+        private List<ProductDTO> FilterByNumberOfStrings(List<ProductDTO> products, string numbersOfStrings)
+        {
+            var sortedProducts = new List<ProductDTO>();
+            foreach (var p in products)
+            {
+                if (numbersOfStrings.Contains(p.NumberOfStrings.ToString()))
+                    sortedProducts.Add(p);
+            }
+            return sortedProducts;
+        }
+
+        private List<ProductDTO> FilterByOverlayFingerboard(List<ProductDTO> products, string overlayfingerboards)
+        {
+            var sortedProducts = new List<ProductDTO>();
+            foreach (var p in products)
+            {
+                if (overlayfingerboards.Contains(p.OverlayFingerboard))
+                    sortedProducts.Add(p);
+            }
+            return sortedProducts;
+        }
+
+        private List<ProductDTO> FilterByPegs(List<ProductDTO> products, string pegs)
+        {
+            var sortedProducts = new List<ProductDTO>();
+            foreach (var p in products)
+            {
+                if (pegs.Contains(p.Pegs))
+                    sortedProducts.Add(p);
+            }
+            return sortedProducts;
+        }
+
+        private List<ProductDTO> FilterByProducer(List<ProductDTO> products, string producers)
+        {
+            var sortedProducts = new List<ProductDTO>();
+            foreach (var p in products)
+            {
+                if (producers.Contains(p.Producer))
+                    sortedProducts.Add(p);
+            }
+            return sortedProducts;
+        }
+
+        private List<ProductDTO> FilterByProducingCountry(List<ProductDTO> products, string producingCountries)
+        {
+            var sortedProducts = new List<ProductDTO>();
+            foreach (var p in products)
+            {
+                if (producingCountries.Contains(p.ProducingCountry))
+                    sortedProducts.Add(p);
+            }
+            return sortedProducts;
+        }
+
+        private List<ProductDTO> FilterBySidePanel(List<ProductDTO> products, string sidePanels)
+        {
+            var sortedProducts = new List<ProductDTO>();
+            foreach (var p in products)
+            {
+                if (sidePanels.Contains(p.SidePanel))
+                    sortedProducts.Add(p);
+            }
+            return sortedProducts;
+        }
+
+        private List<ProductDTO> FilterBySize(List<ProductDTO> products, string sizes)
+        {
+            var sortedProducts = new List<ProductDTO>();
+            foreach (var p in products)
+            {
+                if (sizes.Contains(p.Size))
+                    sortedProducts.Add(p);
+            }
+            return sortedProducts;
+        }
+
+        private List<ProductDTO> FilterByUpperDeck(List<ProductDTO> products, string upperDecks)
+        {
+            var sortedProducts = new List<ProductDTO>();
+            foreach (var p in products)
+            {
+                if (upperDecks.Contains(p.UpperDeck))
+                    sortedProducts.Add(p);
+            }
+            return sortedProducts;
         }
     }
 }

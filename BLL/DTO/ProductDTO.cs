@@ -24,5 +24,6 @@ namespace BLL.DTO
         public string Size { get; set; }
         public string ProducingCountry { get; set; }
         public string Features { get; set; }
+        public string GuitarType { get; set; }
     }
 }

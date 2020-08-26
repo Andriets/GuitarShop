@@ -91,6 +91,8 @@ namespace GuitarShop
             #endregion
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -104,6 +106,8 @@ namespace GuitarShop
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(builder => builder.AllowAnyOrigin());
 
             app.UseAuthorization();
 
