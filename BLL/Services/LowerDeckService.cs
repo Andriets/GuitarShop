@@ -30,7 +30,6 @@ namespace BLL.Services
         {
             var list = UOW.LowerDeckRepository.GetAll().ToList();
             return _mapper.Map<List<LowerDeck>, List<LowerDeckDTO>>(list);
-
         }
 
         public async Task<LowerDeckDTO> GetById(int id)

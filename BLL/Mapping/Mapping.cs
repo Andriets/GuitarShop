@@ -17,10 +17,13 @@ namespace BLL.Mapping
             CreateMap<Features, FeaturesDTO>()
                 .ReverseMap();
 
-            CreateMap<LowerDeck, NumberOfFretsDTO>()
+            CreateMap<LowerDeck, LowerDeckDTO>()
                  .ReverseMap();
 
             CreateMap<NumberOfFrets, NumberOfFretsDTO>()
+                 .ReverseMap();
+
+            CreateMap<NumberOfStrings, NumberOfStringsDTO>()
                  .ReverseMap();
 
             CreateMap<Order, OrderDTO>()

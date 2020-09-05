@@ -41,7 +41,7 @@ namespace API.Controllers
                     list.HasPrevious
                 };
                 Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
-                return Ok(list);
+                return Ok(new {results = list, meta = metadata });
             }        
             else
                 return NotFound("Empty");

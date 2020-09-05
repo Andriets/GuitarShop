@@ -9,6 +9,6 @@ namespace DAL.Interfaces.IRepositories
 {
     public interface IProductRepository : IGenericRepository<Product>
     {
-        PagedList<Product> GetProducts(ProductParameters productParameters);
+        IEnumerable<Product> GetProducts(ProductParameters productParameters);
     }
 }

@@ -20,7 +20,7 @@ namespace DAL.Repositories
         {
             _sortHelper = sortHelper;
         } 
-        public PagedList<Product> GetProducts(ProductParameters productParameters)
+        public IEnumerable<Product> GetProducts(ProductParameters productParameters)
         {
             var products = GetByCondition(p => p.Price >= productParameters.MinPrice &&
                                           p.Price <= productParameters.MaxPrice);
@@ -28,7 +28,7 @@ namespace DAL.Repositories
             SearchByName(ref products, productParameters.ProductName);
             
             var sorterProducts = _sortHelper.ApplySort(products, productParameters.OrderBy);
-
+            return sorterProducts;
             return PagedList<Product>.ToPagedList(sorterProducts,
                 productParameters.PageNumber,
                 productParameters.PageSize);

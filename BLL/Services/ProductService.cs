@@ -94,7 +94,7 @@ namespace BLL.Services
                            Id = prodl.Id,
                            ProductName = prodl.ProductName,
                            FeaturesName = pf?.FeaturesName,
-                           GuitarType = pgt.TypeName,
+                           GuitarType = pgt?.TypeName,
                            Price = prodl.Price,
                            Description = prodl?.Description,
                            Image = prodl.Image,
@@ -177,7 +177,7 @@ namespace BLL.Services
             if (!string.IsNullOrEmpty(productParameters.UpperDecks))
                 products = FilterByUpperDeck(products, productParameters.UpperDecks);
 
-            return new PagedList<ProductDTO>(products, productList.Count, productList.CurrentPage, productList.PageSize);
+            return PagedList<ProductDTO>.ToPagedList(products, productParameters.PageNumber, productParameters.PageSize);
         }
 
         public async Task<ProductDTO> GetById(int id)
@@ -245,7 +245,7 @@ namespace BLL.Services
             var sortedProducts = new List<ProductDTO>();
             foreach (var p in products)
             {
-                if (colors.Contains(p.Color))
+                if (p.Color != null && colors.Contains(p.Color))
                     sortedProducts.Add(p);
             }
             return sortedProducts;
@@ -256,7 +256,7 @@ namespace BLL.Services
             var sortedProducts = new List<ProductDTO>();
             foreach (var p in products)
             {
-                if (features.Contains(p.Features))
+                if (p.Features != null && features.Contains(p.Features))
                     sortedProducts.Add(p);
             }
             return sortedProducts;
@@ -267,7 +267,7 @@ namespace BLL.Services
             var sortedProducts = new List<ProductDTO>();
             foreach (var p in products)
             {
-                if (guitarTypes.Contains(p.GuitarType))
+                if (p.GuitarType != null && guitarTypes.Contains(p.GuitarType))
                     sortedProducts.Add(p);
             }
             return sortedProducts;
@@ -278,7 +278,7 @@ namespace BLL.Services
             var sortedProducts = new List<ProductDTO>();
             foreach (var p in products)
             {
-                if (lowerDecks.Contains(p.LowerDeck))
+                if (p.LowerDeck != null && lowerDecks.Contains(p.LowerDeck))
                     sortedProducts.Add(p);
             }
             return sortedProducts;
@@ -289,7 +289,7 @@ namespace BLL.Services
             var sortedProducts = new List<ProductDTO>();
             foreach (var p in products)
             {
-                if (numbersOfFrets.Contains(p.NumberOfFrets.ToString()))
+                if (p.NumberOfFrets != null && numbersOfFrets.Contains(p.NumberOfFrets.ToString()))
                     sortedProducts.Add(p);
             }
             return sortedProducts;
@@ -300,7 +300,7 @@ namespace BLL.Services
             var sortedProducts = new List<ProductDTO>();
             foreach (var p in products)
             {
-                if (numbersOfStrings.Contains(p.NumberOfStrings.ToString()))
+                if (p.NumberOfStrings != null && numbersOfStrings.Contains(p.NumberOfStrings.ToString()))
                     sortedProducts.Add(p);
             }
             return sortedProducts;
@@ -311,7 +311,7 @@ namespace BLL.Services
             var sortedProducts = new List<ProductDTO>();
             foreach (var p in products)
             {
-                if (overlayfingerboards.Contains(p.OverlayFingerboard))
+                if (p.OverlayFingerboard != null && overlayfingerboards.Contains(p.OverlayFingerboard))
                     sortedProducts.Add(p);
             }
             return sortedProducts;
@@ -322,7 +322,7 @@ namespace BLL.Services
             var sortedProducts = new List<ProductDTO>();
             foreach (var p in products)
             {
-                if (pegs.Contains(p.Pegs))
+                if (p.Pegs != null && pegs.Contains(p.Pegs))
                     sortedProducts.Add(p);
             }
             return sortedProducts;
@@ -333,7 +333,7 @@ namespace BLL.Services
             var sortedProducts = new List<ProductDTO>();
             foreach (var p in products)
             {
-                if (producers.Contains(p.Producer))
+                if (p.Producer != null && producers.Contains(p.Producer))
                     sortedProducts.Add(p);
             }
             return sortedProducts;
@@ -344,7 +344,7 @@ namespace BLL.Services
             var sortedProducts = new List<ProductDTO>();
             foreach (var p in products)
             {
-                if (producingCountries.Contains(p.ProducingCountry))
+                if (p.ProducingCountry != null && producingCountries.Contains(p.ProducingCountry))
                     sortedProducts.Add(p);
             }
             return sortedProducts;
@@ -355,7 +355,7 @@ namespace BLL.Services
             var sortedProducts = new List<ProductDTO>();
             foreach (var p in products)
             {
-                if (sidePanels.Contains(p.SidePanel))
+                if (p.SidePanel != null && sidePanels.Contains(p.SidePanel))
                     sortedProducts.Add(p);
             }
             return sortedProducts;
@@ -366,7 +366,7 @@ namespace BLL.Services
             var sortedProducts = new List<ProductDTO>();
             foreach (var p in products)
             {
-                if (sizes.Contains(p.Size))
+                if (p.Size != null && sizes.Contains(p.Size))
                     sortedProducts.Add(p);
             }
             return sortedProducts;
@@ -377,7 +377,7 @@ namespace BLL.Services
             var sortedProducts = new List<ProductDTO>();
             foreach (var p in products)
             {
-                if (upperDecks.Contains(p.UpperDeck))
+                if (p.UpperDeck != null && upperDecks.Contains(p.UpperDeck))
                     sortedProducts.Add(p);
             }
             return sortedProducts;
